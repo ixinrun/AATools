@@ -14,6 +14,7 @@ public class MyApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
         AAToolsMgr.getInstance()
                 .init(this)
                 .initCrashLog(null, 7, new CrashHandler.Listener() {
@@ -27,6 +28,7 @@ public class MyApp extends Application {
                         });
                         return true;
                     }
-                });
+                })
+                .initLocalFile(CrashHandler.getInstance().getCrashFilesPath());
     }
 }

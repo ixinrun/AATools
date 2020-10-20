@@ -106,7 +106,7 @@
         android:layout_height="match_parent"
         android:gravity="center_horizontal|bottom"
         android:paddingBottom="10dp"
-        android:text="author: @xinrun"
+        android:text="author: @toperc"
         android:textColor="@color/text_color_tiny"
         android:textSize="12dp" />
 

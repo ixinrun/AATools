@@ -85,14 +85,14 @@ public class AAToolsActivity extends BaseActivity {
      * 创建常用的工具类
      */
     private void creatCommonlyTools() {
-        creatItem(mCommonlyToolsFl, new ItemBean(R.drawable.item_server_log_ic, "日志重连", new ItemBean.OnItemClickListener() {
-            @Override
-            public boolean onClick(Context context) {
-                // serverlog重连
-                Toast.makeText(mContext, "正在连接日志服务器...", Toast.LENGTH_SHORT).show();
-                return true;
-            }
-        }));
+//        creatItem(mCommonlyToolsFl, new ItemBean(R.drawable.item_server_log_ic, "日志重连", new ItemBean.OnItemClickListener() {
+//            @Override
+//            public boolean onClick(Context context) {
+//                // serverlog重连
+//                Toast.makeText(mContext, "正在连接日志服务器...", Toast.LENGTH_SHORT).show();
+//                return true;
+//            }
+//        }));
 
         creatItem(mCommonlyToolsFl, new ItemBean(R.drawable.item_crash_log_ic, "崩溃日志", new ItemBean.OnItemClickListener() {
             @Override

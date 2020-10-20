@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.open_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AAToolsMgr.openAssistant(MainActivity.this);
+                AAToolsMgr.open(MainActivity.this);
             }
         });
 

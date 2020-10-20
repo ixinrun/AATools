@@ -67,11 +67,11 @@ public final class AAToolsMgr {
     /**
      * 应用文件路径
      *
-     * @param filepath
+     * @param filePath
      * @return
      */
-    public AAToolsMgr initFilePath(String... filepath) {
-        Util.sFilePaths = filepath;
+    public AAToolsMgr initLocalFile(String... filePath) {
+        Util.sFilePaths = filePath;
         return this;
     }
 
@@ -94,7 +94,7 @@ public final class AAToolsMgr {
      *
      * @param context
      */
-    public static void openAssistant(Context context) {
+    public static void open(Context context) {
         context.startActivity(new Intent(context, AAToolsActivity.class));
     }
 
