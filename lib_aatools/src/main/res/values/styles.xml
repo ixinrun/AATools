@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- DevelopToolsTheme -->
+    <style name="DevelopToolsTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--手机状态栏颜色-->
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!--标题栏颜色-->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <!--获取焦点时，文本框，复选框等颜色-->
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--菜单样式，自定义-->
+        <item name="actionOverflowMenuStyle">@style/DevelopToolsTheme.ms</item>
+    </style>
+
+    <!-- DevelopToolsTheme.ms -->
+    <style name="DevelopToolsTheme.ms" parent="@style/Widget.AppCompat.Light.PopupMenu.Overflow">
+        <!--禁用重叠，不会重复在标题栏-->
+        <item name="overlapAnchor">false</item>
+        <!--背景颜色-->
+        <item name="android:popupBackground">@color/colorPopupMenu</item>
+        <!--间距-->
+        <item name="android:dropDownVerticalOffset">1dp</item>
+    </style>
+</resources>

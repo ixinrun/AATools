@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--手机状态栏颜色-->
+    <color name="colorPrimaryDark">#FFFFFF</color>
+    <!--标题栏颜色-->
+    <color name="colorPrimary">#FFFFFF</color>
+    <!--获取焦点时，文本框，复选框等颜色-->
+    <color name="colorAccent">#D81B60</color>
+    <!--菜单背景色-->
+    <color name="colorPopupMenu">#303030</color>
+</resources>
