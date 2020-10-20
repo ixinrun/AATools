@@ -1,4 +1,4 @@
-package com.example.lib_aatools.base;
+package com.toperc.lib_aatools.base;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -14,11 +14,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.lib_aatools.R;
-import com.example.lib_aatools.tools.DataCleanHelper;
-import com.example.lib_aatools.tools.crash_log.CrashLogActivity;
-import com.example.lib_aatools.tools.file.FileViewActivity;
-import com.example.lib_aatools.tools.tracker.TrackerUtil;
+import com.toperc.lib_aatools.R;
+import com.toperc.lib_aatools.tools.DataCleanHelper;
+import com.toperc.lib_aatools.tools.crash_log.CrashLogActivity;
+import com.toperc.lib_aatools.tools.file.FileViewActivity;
+import com.toperc.lib_aatools.tools.tracker.TrackerUtil;
 import com.google.android.flexbox.FlexboxLayout;
 
 import java.util.List;

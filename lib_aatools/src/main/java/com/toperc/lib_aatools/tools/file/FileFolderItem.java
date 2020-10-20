@@ -1,9 +1,9 @@
-package com.example.lib_aatools.tools.file;
+package com.toperc.lib_aatools.tools.file;
 
 import com.chad.library.adapter.base.entity.AbstractExpandableItem;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 
-import static com.example.lib_aatools.tools.file.FileViewAdapter.TYPE_LEVER_100;
+import static com.toperc.lib_aatools.tools.file.FileViewAdapter.TYPE_LEVER_100;
 
 /**
  * 功能描述: 文件夹实体类

@@ -1,4 +1,4 @@
-package com.example.aatools;
+package com.toperc.aatools;
 
 import org.junit.Test;
 

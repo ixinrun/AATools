@@ -1,10 +1,10 @@
-package com.example.aatools;
+package com.toperc.aatools;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.example.lib_aatools.AAToolsMgr;
+import com.toperc.lib_aatools.AAToolsMgr;
 
 public class MainActivity extends AppCompatActivity {
 
