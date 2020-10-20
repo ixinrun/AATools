@@ -17,6 +17,7 @@ allprojects {
 **Step 2.** Add the dependency
 ```
 dependencies {
-	    implementation 'com.github.scwang90:SmartRefreshLayout:Tag'
+	    implementation 'implementation 'com.github.toperc:AATools:Tag'
 }
 ```
+It is recommended to use the latest version of tag for dependencies.
