@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
-import android.util.Log;
 import android.widget.Toast;
 
 /**
@@ -48,13 +47,15 @@ public class TrackerUtil {
      */
     public static boolean openTracker(Context context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(context)) {
-            context.startActivity(new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + context.getPackageName())));
-            Toast.makeText(context, "请先授予 \"AATools\" 悬浮窗权限", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + context.getPackageName()));
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+            Toast.makeText(context, "请先授予本应用悬浮窗权限", Toast.LENGTH_LONG).show();
             return false;
         }
         if (!isAccessibilitySettingsOn(context)) {
             context.startActivity(new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS));
-            Toast.makeText(context, "请先开启 \"AATools\" 的辅助功能", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "请先开启本应用辅助功能", Toast.LENGTH_LONG).show();
             return false;
         }
 

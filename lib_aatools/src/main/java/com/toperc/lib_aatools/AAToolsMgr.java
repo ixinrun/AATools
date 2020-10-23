@@ -40,16 +40,16 @@ public final class AAToolsMgr {
         return this;
     }
 
-    /**
-     * 设置serverlog
-     *
-     * @param ip  serverlog 服务器ip
-     * @param tag 当前设备唯一标识，传空会默认设置标识
-     * @return
-     */
-    public AAToolsMgr initServerLog(String ip, String tag) {
-        return this;
-    }
+//    /**
+//     * 设置serverlog
+//     *
+//     * @param ip  serverlog 服务器ip
+//     * @param tag 当前设备唯一标识，传空会默认设置标识
+//     * @return
+//     */
+//    public AAToolsMgr initServerLog(String ip, String tag) {
+//        return this;
+//    }
 
     /**
      * 设置CrashLog
