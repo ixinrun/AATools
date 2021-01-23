@@ -17,7 +17,7 @@ allprojects {
 **Step 2.** Add the dependency
 ```
 dependencies {
-	    implementation 'com.github.toperc:AATools:1.0.0'
+	    implementation 'com.github.ixinrun:AATools:<version>'
 }
 ```
 It is recommended to use the latest version of tag for dependencies.
