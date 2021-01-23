@@ -8,7 +8,7 @@ import android.provider.Settings;
 import android.widget.Toast;
 
 /**
- * @author toperc
+ * @author ixinrun
  * @data 2020/9/24
  */
 public class TrackerUtil {

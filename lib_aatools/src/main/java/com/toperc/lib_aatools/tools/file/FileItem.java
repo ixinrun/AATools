@@ -8,7 +8,7 @@ import static com.toperc.lib_aatools.tools.file.FileViewAdapter.TYPE_LEVER_101;
  * 功能描述: 文件实体类
  * </p>
  *
- * @author toperc
+ * @author ixinrun
  * @data 2020/9/27
  */
 public class FileItem implements MultiItemEntity {

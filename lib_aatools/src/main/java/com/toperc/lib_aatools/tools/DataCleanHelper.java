@@ -9,7 +9,7 @@ import java.io.File;
  * 功能描述: 一键清空
  * </p>
  *
- * @author toperc
+ * @author ixinrun
  * @data 2020/9/25
  */
 public class DataCleanHelper {

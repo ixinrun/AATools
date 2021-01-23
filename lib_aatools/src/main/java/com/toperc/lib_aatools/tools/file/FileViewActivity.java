@@ -22,7 +22,7 @@ import java.util.List;
  * 功能描述: 沙盒文件预览
  * </p>
  *
- * @author toperc
+ * @author ixinrun
  * @data 2020/9/27
  */
 public class FileViewActivity extends BaseActivity {

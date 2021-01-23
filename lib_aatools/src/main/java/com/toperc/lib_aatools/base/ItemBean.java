@@ -7,7 +7,7 @@ import android.support.annotation.DrawableRes;
  * 功能描述: 小工具item
  * </p>
  *
- * @author toperc
+ * @author ixinrun
  * @data 2020/9/24
  */
 public class ItemBean {

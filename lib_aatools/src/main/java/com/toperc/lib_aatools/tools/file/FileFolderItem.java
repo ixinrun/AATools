@@ -9,7 +9,7 @@ import static com.toperc.lib_aatools.tools.file.FileViewAdapter.TYPE_LEVER_100;
  * 功能描述: 文件夹实体类
  * </p>
  *
- * @author toperc
+ * @author ixinrun
  * @data 2020/9/27
  */
 public class FileFolderItem extends AbstractExpandableItem<FileItem> implements MultiItemEntity {

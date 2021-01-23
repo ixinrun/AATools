@@ -27,7 +27,7 @@ import java.util.List;
  * 功能描述: 开发工具展示页面
  * </p>
  *
- * @author toperc
+ * @author ixinrun
  * @data 2020/8/25
  */
 public class AAToolsActivity extends BaseActivity {

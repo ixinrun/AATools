@@ -6,7 +6,7 @@ import android.text.TextUtils;
 import android.view.accessibility.AccessibilityEvent;
 
 /**
- * @author toperc
+ * @author ixinrun
  * @data 2020/9/24
  */
 public class TrackerService extends AccessibilityService {

@@ -25,7 +25,7 @@ import java.util.Map;
  * 功能描述: Crash捕获
  * </p>
  *
- * @author: toperc
+ * @author: ixinrun
  * @data: 2018/8/10
  */
 public class CrashHandler implements Thread.UncaughtExceptionHandler {

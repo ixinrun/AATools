@@ -18,7 +18,7 @@ import com.toperc.lib_aatools.R;
  * 功能描述: 页面信息悬浮框
  * </p>
  *
- * @author toperc
+ * @author ixinrun
  * @data 2020/9/24
  */
 public class TrackerFloatingView extends LinearLayout {

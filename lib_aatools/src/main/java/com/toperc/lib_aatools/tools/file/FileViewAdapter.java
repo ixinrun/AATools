@@ -12,7 +12,7 @@ import com.toperc.lib_aatools.R;
 import java.util.List;
 
 /**
- * @author toperc
+ * @author ixinrun
  * @data 2020/9/27
  */
 public class FileViewAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolder> {

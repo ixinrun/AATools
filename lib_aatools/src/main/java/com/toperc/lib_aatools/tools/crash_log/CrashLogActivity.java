@@ -21,7 +21,7 @@ import java.io.IOException;
  * 功能描述: 日志展示页面
  * </p>
  *
- * @author toperc
+ * @author ixinrun
  * @data 2020/9/24
  */
 public class CrashLogActivity extends BaseActivity {

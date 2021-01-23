@@ -7,7 +7,7 @@ import android.view.Gravity;
 import android.view.WindowManager;
 
 /**
- * @author toperc
+ * @author ixinrun
  * @data 2020/9/24
  */
 public class TrackerWindowManager {

@@ -16,7 +16,7 @@ import java.util.Arrays;
  * 功能描述: 开发工具管理类
  * </p>
  *
- * @author xinrun
+ * @author ixinrun
  * @data 2020/8/25
  */
 public final class AAToolsMgr {
