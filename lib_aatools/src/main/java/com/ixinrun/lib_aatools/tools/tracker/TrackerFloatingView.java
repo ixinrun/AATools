@@ -1,4 +1,4 @@
-package com.toperc.lib_aatools.tools.tracker;
+package com.ixinrun.lib_aatools.tools.tracker;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.toperc.lib_aatools.R;
+import com.ixinrun.lib_aatools.R;
 
 
 /**

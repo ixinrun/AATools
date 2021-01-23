@@ -1,4 +1,4 @@
-package com.toperc.lib_aatools.tools.crash_log;
+package com.ixinrun.lib_aatools.tools.crash_log;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

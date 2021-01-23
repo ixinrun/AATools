@@ -1,13 +1,13 @@
-package com.toperc.lib_aatools;
+package com.ixinrun.lib_aatools;
 
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 
-import com.toperc.lib_aatools.base.AAToolsActivity;
-import com.toperc.lib_aatools.base.ItemBean;
-import com.toperc.lib_aatools.base.Util;
-import com.toperc.lib_aatools.tools.crash_log.CrashHandler;
+import com.ixinrun.lib_aatools.base.AAToolsActivity;
+import com.ixinrun.lib_aatools.base.ItemBean;
+import com.ixinrun.lib_aatools.base.Util;
+import com.ixinrun.lib_aatools.tools.crash_log.CrashHandler;
 
 import java.util.ArrayList;
 import java.util.Arrays;

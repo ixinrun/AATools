@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.toperc.lib_aatools">
+    package="com.ixinrun.lib_aatools">
 
     <!--悬浮框权限-->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
@@ -12,23 +12,23 @@
     <application>
 
         <activity
-            android:name="com.toperc.lib_aatools.base.AAToolsActivity"
+            android:name="com.ixinrun.lib_aatools.base.AAToolsActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/DevelopToolsTheme" />
 
         <activity
-            android:name="com.toperc.lib_aatools.tools.crash_log.CrashLogActivity"
+            android:name="com.ixinrun.lib_aatools.tools.crash_log.CrashLogActivity"
             android:screenOrientation="portrait"
             android:theme="@style/DevelopToolsTheme" />
 
         <activity
-            android:name="com.toperc.lib_aatools.tools.file.FileViewActivity"
+            android:name="com.ixinrun.lib_aatools.tools.file.FileViewActivity"
             android:screenOrientation="portrait"
             android:theme="@style/DevelopToolsTheme" />
 
         <service
-            android:name="com.toperc.lib_aatools.tools.tracker.TrackerService"
+            android:name="com.ixinrun.lib_aatools.tools.tracker.TrackerService"
             android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
 
             <intent-filter>

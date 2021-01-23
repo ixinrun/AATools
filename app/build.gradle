@@ -7,7 +7,7 @@ android {
     compileSdkVersion 28
 
     defaultConfig {
-        applicationId "com.toperc.aatools"
+        applicationId "com.ixinrun.aatools"
         minSdkVersion 18
         targetSdkVersion 28
         versionCode 1

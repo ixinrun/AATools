@@ -1,4 +1,4 @@
-package com.toperc.aatools
+package com.ixinrun.aatools
 
 import org.junit.Assert
 import org.junit.Test

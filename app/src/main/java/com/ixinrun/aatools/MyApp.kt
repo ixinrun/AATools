@@ -1,11 +1,11 @@
-package com.toperc.aatools
+package com.ixinrun.aatools
 
 import android.app.Application
 import android.os.Handler
 import android.os.Looper
 import android.widget.Toast
-import com.toperc.lib_aatools.AAToolsMgr
-import com.toperc.lib_aatools.tools.crash_log.CrashHandler
+import com.ixinrun.lib_aatools.AAToolsMgr
+import com.ixinrun.lib_aatools.tools.crash_log.CrashHandler
 import java.io.File
 
 class MyApp : Application() {

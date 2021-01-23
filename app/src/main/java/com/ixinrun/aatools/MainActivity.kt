@@ -1,9 +1,9 @@
-package com.toperc.aatools
+package com.ixinrun.aatools
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import com.toperc.lib_aatools.AAToolsMgr
+import com.ixinrun.lib_aatools.AAToolsMgr
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

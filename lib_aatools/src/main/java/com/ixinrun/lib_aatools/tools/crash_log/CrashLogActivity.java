@@ -1,4 +1,4 @@
-package com.toperc.lib_aatools.tools.crash_log;
+package com.ixinrun.lib_aatools.tools.crash_log;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,8 +9,8 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
-import com.toperc.lib_aatools.R;
-import com.toperc.lib_aatools.base.BaseActivity;
+import com.ixinrun.lib_aatools.R;
+import com.ixinrun.lib_aatools.base.BaseActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

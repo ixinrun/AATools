@@ -1,4 +1,4 @@
-package com.toperc.lib_aatools.tools.file;
+package com.ixinrun.lib_aatools.tools.file;
 
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -7,7 +7,7 @@ import android.widget.TextView;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
-import com.toperc.lib_aatools.R;
+import com.ixinrun.lib_aatools.R;
 
 import java.util.List;
 
