@@ -19,7 +19,7 @@ import com.ixinrun.lib_aatools.R;
  * </p>
  *
  * @author ixinrun
- * @data 2020/9/24
+ * @date 2020/9/24
  */
 public class TrackerFloatingView extends LinearLayout {
     private final Context mContext;

@@ -10,7 +10,7 @@ import java.io.File;
 
 /**
  * @author ixinrun
- * @data 2020/9/28
+ * @date 2020/9/28
  */
 public class FileUtil {
 

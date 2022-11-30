@@ -7,7 +7,7 @@ import android.view.accessibility.AccessibilityEvent;
 
 /**
  * @author ixinrun
- * @data 2020/9/24
+ * @date 2020/9/24
  */
 public class TrackerService extends AccessibilityService {
     public static final String TAG = "TrackerService";

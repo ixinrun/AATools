@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * @author ixinrun
- * @data 2020/9/27
+ * @date 2020/9/27
  */
 public class FileViewAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, BaseViewHolder> {
 

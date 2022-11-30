@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 /**
  * @author ixinrun
- * @data 2020/9/24
+ * @date 2020/9/24
  */
 public class TrackerUtil {
 

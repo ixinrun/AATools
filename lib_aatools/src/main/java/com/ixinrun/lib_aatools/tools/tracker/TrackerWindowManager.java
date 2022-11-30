@@ -8,7 +8,7 @@ import android.view.WindowManager;
 
 /**
  * @author ixinrun
- * @data 2020/9/24
+ * @date 2020/9/24
  */
 public class TrackerWindowManager {
     private final Context mContext;

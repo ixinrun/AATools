@@ -17,7 +17,7 @@ import java.util.Arrays;
  * </p>
  *
  * @author ixinrun
- * @data 2020/8/25
+ * @date 2020/8/25
  */
 public final class AAToolsMgr {
     private static AAToolsMgr INSTANCE = new AAToolsMgr();

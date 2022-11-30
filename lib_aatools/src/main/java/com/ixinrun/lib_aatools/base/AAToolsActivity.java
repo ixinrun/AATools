@@ -28,7 +28,7 @@ import java.util.List;
  * </p>
  *
  * @author ixinrun
- * @data 2020/8/25
+ * @date 2020/8/25
  */
 public class AAToolsActivity extends BaseActivity {
 

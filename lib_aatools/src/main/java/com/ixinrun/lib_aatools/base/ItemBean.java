@@ -1,14 +1,14 @@
 package com.ixinrun.lib_aatools.base;
 
 import android.content.Context;
-import android.support.annotation.DrawableRes;
+import androidx.annotation.DrawableRes;
 
 /**
  * 功能描述: 小工具item
  * </p>
  *
  * @author ixinrun
- * @data 2020/9/24
+ * @date 2020/9/24
  */
 public class ItemBean {
     private int src;

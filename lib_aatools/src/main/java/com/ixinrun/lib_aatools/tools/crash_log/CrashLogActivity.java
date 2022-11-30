@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
@@ -22,7 +22,7 @@ import java.io.IOException;
  * </p>
  *
  * @author ixinrun
- * @data 2020/9/24
+ * @date 2020/9/24
  */
 public class CrashLogActivity extends BaseActivity {
     private Toolbar mToolbar;

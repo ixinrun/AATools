@@ -6,8 +6,8 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Environment;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import android.text.TextUtils;
 
 import java.io.File;
@@ -25,8 +25,8 @@ import java.util.Map;
  * 功能描述: Crash捕获
  * </p>
  *
- * @author: ixinrun
- * @data: 2018/8/10
+ * @author ixinrun
+ * @date 2018/8/10
  */
 public class CrashHandler implements Thread.UncaughtExceptionHandler {
     private Context mContext;
