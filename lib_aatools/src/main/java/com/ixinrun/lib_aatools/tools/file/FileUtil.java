@@ -25,13 +25,13 @@ public class FileUtil {
             File file = new File(url);
             Intent intent = new Intent();
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            //设置intent的Action属性
+            // 设置intent的Action属性
             intent.setAction(Intent.ACTION_VIEW);
-            //获取文件file的MIME类型
+            // 获取文件file的MIME类型
             String type = getMIMEType(file);
-            //设置intent的data和Type属性。
+            // 设置intent的data和Type属性。
             intent.setDataAndType(/*uri*/Uri.fromFile(file), type);
-            //跳转
+            // 跳转
             context.startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(context, "未找到打开该文件的应用", Toast.LENGTH_LONG).show();
@@ -46,17 +46,17 @@ public class FileUtil {
     private static String getMIMEType(File file) {
         String type = "*/*";
         String fName = file.getName();
-        //获取后缀名前的分隔符"."在fName中的位置。
+        // 获取后缀名前的分隔符"."在fName中的位置。
         int dotIndex = fName.lastIndexOf(".");
         if (dotIndex < 0) {
             return type;
         }
-        /* 获取文件的后缀名 */
+        // 获取文件的后缀名
         String end = fName.substring(dotIndex).toLowerCase();
         if (TextUtils.isEmpty(end)) {
             return type;
         }
-        //在MIME和文件类型的匹配表中找到对应的MIME类型。
+        // 在MIME和文件类型的匹配表中找到对应的MIME类型。
         for (int i = 0; i < MIME_MapTable.length; i++) {
             if (end.equals(MIME_MapTable[i][0])) {
                 type = MIME_MapTable[i][1];
@@ -69,7 +69,7 @@ public class FileUtil {
      * 所有MIME类型参考
      */
     private static final String[][] MIME_MapTable = {
-            //{后缀名， MIME类型}
+            // {后缀名， MIME类型}
             {".3gp", "video/3gpp"},
             {".apk", "application/vnd.android.package-archive"},
             {".asf", "video/x-ms-asf"},

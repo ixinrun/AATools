@@ -103,7 +103,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
     private File saveCrashInfo2File(Context context, Throwable ex) {
         StringBuilder sb = new StringBuilder();
 
-        //设备信息
+        // 设备信息
         Map<String, String> info = collectDeviceInfo(context);
         if (info != null && !info.isEmpty()) {
             for (Map.Entry<String, String> entry : info.entrySet()) {
@@ -111,11 +111,11 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
                 String value = entry.getValue();
                 sb.append(key).append("=").append(value).append("\r\n");
             }
-            //分割
+            // 分割
             sb.append("\r\n");
         }
 
-        //栈信息
+        // 栈信息
         Writer writer = new StringWriter();
         PrintWriter pw = new PrintWriter(writer);
         ex.printStackTrace(pw);
@@ -164,7 +164,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
      */
     private Map<String, String> collectDeviceInfo(Context context) {
         Map<String, String> info = new HashMap<>();
-        //获取应用信息
+        // 获取应用信息
         try {
             PackageManager pm = context.getPackageManager();
             PackageInfo pi = pm.getPackageInfo(context.getPackageName(), PackageManager.GET_ACTIVITIES);
@@ -178,12 +178,12 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
             e.printStackTrace();
         }
 
-        //反射机制获取设备信息。
-        //获取设备信息类中的所有变量信息。
+        // 反射机制获取设备信息。
+        // 获取设备信息类中的所有变量信息。
         Field[] fields = Build.class.getDeclaredFields();
         for (Field field : fields) {
             try {
-                //对私有对象进行访问
+                // 对私有对象进行访问
                 field.setAccessible(true);
                 info.put(field.getName(), field.get("").toString());
             } catch (Exception e) {

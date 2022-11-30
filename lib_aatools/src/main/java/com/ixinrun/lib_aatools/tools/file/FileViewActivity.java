@@ -73,26 +73,26 @@ public class FileViewActivity extends BaseActivity {
             if (!folder.exists()) {
                 continue;
             }
-            //构建文件夹
+            // 构建文件夹
             FileFolderItem folderItem = new FileFolderItem(folder.getName(), folder.getAbsolutePath());
             File[] files = folder.listFiles();
             if (files == null || files.length == 0) {
-                //空文件夹
+                // 空文件夹
                 FileItem fileItem = new FileItem(true);
                 folderItem.addSubItem(fileItem);
             } else {
-                //遍历子文件
+                // 遍历子文件
                 for (File file : files) {
                     FileItem fileItem = new FileItem(file.getName(), file.getAbsolutePath());
                     folderItem.addSubItem(fileItem);
                 }
             }
 
-            //列表追加
+            // 列表追加
             data.add(folderItem);
         }
 
-        //刷新界面
+        // 刷新界面
         mAdapter.setNewData(data);
     }
 
