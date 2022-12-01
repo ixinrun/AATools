@@ -100,7 +100,7 @@ public class AAToolsActivity extends BaseActivity {
             }
         }));
 
-        creatItem(mCommonlyToolsFl, new ItemBean(R.drawable.item_files_view_ic, "沙盒浏览", new ItemBean.OnItemClickListener() {
+        creatItem(mCommonlyToolsFl, new ItemBean(R.drawable.item_files_view_ic, "沙盒文件", new ItemBean.OnItemClickListener() {
             @Override
             public boolean onClick(Context context) {
                 FileViewActivity.startActivity(context);

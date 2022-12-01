@@ -12,7 +12,7 @@ import static com.ixinrun.lib_aatools.tools.file.FileViewAdapter.TYPE_LEVER_100;
  * @author ixinrun
  * @date 2020/9/27
  */
-public class FileFolderItem extends AbstractExpandableItem<FileItem> implements MultiItemEntity {
+public class FileFolderItem extends AbstractExpandableItem<MultiItemEntity> implements MultiItemEntity {
 
     private String folderName;
     private String folderPath;
