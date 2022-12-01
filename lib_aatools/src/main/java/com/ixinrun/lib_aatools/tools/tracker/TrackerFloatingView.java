@@ -1,7 +1,6 @@
 package com.ixinrun.lib_aatools.tools.tracker;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Point;
 import android.view.MotionEvent;
 import android.view.View;
@@ -9,7 +8,6 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ixinrun.lib_aatools.R;
 
@@ -44,11 +42,7 @@ public class TrackerFloatingView extends LinearLayout {
         mIvClose.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext, "关闭悬浮框", Toast.LENGTH_SHORT).show();
-                mContext.startService(
-                        new Intent(mContext, TrackerService.class)
-                                .putExtra(TrackerService.COMMAND, TrackerService.COMMAND_CLOSE)
-                );
+                TrackerService.stop(mContext);
             }
         });
     }

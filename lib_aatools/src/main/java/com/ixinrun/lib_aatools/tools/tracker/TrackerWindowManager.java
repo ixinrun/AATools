@@ -43,7 +43,6 @@ public class TrackerWindowManager {
         if (mFloatingView == null) {
             mFloatingView = new TrackerFloatingView(mContext);
             mFloatingView.setLayoutParams(LAYOUT_PARAMS);
-
             mWindowManager.addView(mFloatingView, LAYOUT_PARAMS);
         }
     }

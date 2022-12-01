@@ -22,8 +22,6 @@ import java.util.Arrays;
 public final class AAToolsMgr {
     private static AAToolsMgr INSTANCE = new AAToolsMgr();
 
-    private Application mApp;
-
     public static AAToolsMgr getInstance() {
         return INSTANCE;
     }
@@ -36,7 +34,6 @@ public final class AAToolsMgr {
      */
     public AAToolsMgr init(Application app) {
         Util.sApp = app;
-        this.mApp = app;
         return this;
     }
 
@@ -60,7 +57,7 @@ public final class AAToolsMgr {
      * @return
      */
     public AAToolsMgr initCrashLog(String savePath, double saveDay, CrashHandler.Listener l) {
-        CrashHandler.getInstance().init(mApp, savePath, saveDay, l);
+        CrashHandler.getInstance().init(Util.sApp, savePath, saveDay, l);
         return this;
     }
 
