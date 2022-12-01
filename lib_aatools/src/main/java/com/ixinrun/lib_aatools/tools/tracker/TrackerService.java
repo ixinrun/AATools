@@ -10,7 +10,6 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.text.TextUtils;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -44,41 +43,23 @@ public class TrackerService extends Service {
         private final Handler handler = new Handler(Looper.getMainLooper());
         private boolean isForeground;
 
-        private void onForegroundCallback() {
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    if (mTrackerWindowManager == null) {
-                        return;
-                    }
-                    if (isForeground) {
-                        mTrackerWindowManager.addView();
-                    } else {
-                        mTrackerWindowManager.removeView();
-                    }
-                }
-            }, 200);
-        }
-
         @Override
         public void onActivityCreated(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {
         }
 
         @Override
         public void onActivityStarted(@NonNull Activity activity) {
-
         }
 
         @Override
         public void onActivityResumed(@NonNull Activity activity) {
             isForeground = true;
-            onForegroundCallback();
             if (mTrackerWindowManager == null) {
                 return;
             }
+            mTrackerWindowManager.addView();
             CharSequence packageName = activity.getPackageName();
             CharSequence className = activity.getClass().getName();
-            Log.e("TAG", "-----------onResumed" + packageName + "-------------" + className);
             if (!TextUtils.isEmpty(packageName) && !TextUtils.isEmpty(className)) {
                 String pn = packageName.toString();
                 String cn = className.toString();
@@ -92,7 +73,14 @@ public class TrackerService extends Service {
         @Override
         public void onActivityPaused(@NonNull Activity activity) {
             isForeground = false;
-            onForegroundCallback();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (!isForeground && mTrackerWindowManager != null) {
+                        mTrackerWindowManager.removeView();
+                    }
+                }
+            }, 200);
         }
 
         @Override
