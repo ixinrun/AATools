@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.ixinrun.lib_aatools.R;
 import com.ixinrun.lib_aatools.base.BaseActivity;
+import com.ixinrun.lib_aatools.base.Util;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -65,10 +66,22 @@ public class FileViewActivity extends BaseActivity {
         if (internalFolder != null) {
             data.add(internalFolder);
         }
+
         // 外部私有存储
         FileFolderItem externalFolder = createFoldItem("外部私有存储", getExternalCacheDir().getParent());
         if (externalFolder != null) {
             data.add(externalFolder);
+        }
+
+        // 其他存储
+        if (Util.sOtherDirs != null) {
+            for (String dir : Util.sOtherDirs) {
+                File f = new File(dir);
+                FileFolderItem otherFolder = createFoldItem(f.getName(), f.getAbsolutePath());
+                if (otherFolder != null) {
+                    data.add(otherFolder);
+                }
+            }
         }
 
         // 刷新界面
@@ -90,6 +103,7 @@ public class FileViewActivity extends BaseActivity {
             return null;
         }
         FileFolderItem folder = new FileFolderItem(name, path);
+        folder.setTop(10);
         mapFolder(folder, file);
         return folder;
     }

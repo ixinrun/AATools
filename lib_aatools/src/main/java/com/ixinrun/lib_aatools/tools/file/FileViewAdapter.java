@@ -31,6 +31,7 @@ public class FileViewAdapter extends BaseMultiItemQuickAdapter<MultiItemEntity, 
         switch (helper.getItemViewType()) {
             case TYPE_LEVER_100:
                 final FileFolderItem folderItem = (FileFolderItem) item;
+                helper.itemView.setPadding(folderItem.getLeft(), folderItem.getTop(), 0, 0);
                 helper.setText(R.id.folder_name_tv, folderItem.getFolderName());
                 helper.setText(R.id.folder_path_tv, folderItem.getFolderPath());
                 helper.itemView.setOnClickListener(new View.OnClickListener() {

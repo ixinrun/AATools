@@ -16,7 +16,7 @@ public class Util {
 
     public static Application sApp;
 
-    public static String[] sOtherFilePaths;
+    public static String[] sOtherDirs;
 
     public static List<ItemBean> sCustomItems = new ArrayList<>();
 }

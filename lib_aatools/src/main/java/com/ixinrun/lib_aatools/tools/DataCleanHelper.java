@@ -79,8 +79,11 @@ public class DataCleanHelper {
      */
     private static void deleteFilesByDirectory(File directory) {
         if (directory != null && directory.exists() && directory.isDirectory()) {
-            for (File item : directory.listFiles()) {
-                item.delete();
+            File[] files = directory.listFiles();
+            if (files != null || files.length > 0) {
+                for (File file : files) {
+                    file.delete();
+                }
             }
         }
     }

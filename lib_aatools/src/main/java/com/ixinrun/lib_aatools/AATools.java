@@ -22,7 +22,7 @@ public final class AATools {
     /**
      * 初始配置
      */
-    public static Builder config(Application app) {
+    public static Builder with(Application app) {
         return new Builder(app);
     }
 
@@ -45,12 +45,12 @@ public final class AATools {
         }
 
         /**
-         * 其他文件路径
+         * 其他文件夹路径，如果是单个文件不生效
          *
-         * @param paths 文件路径，可以是单个文件，也可以是文件夹
+         * @param dirs 文件夹路径
          */
-        public Builder setOtherFiles(String... paths) {
-            Util.sOtherFilePaths = paths;
+        public Builder setOtherDirs(String... dirs) {
+            Util.sOtherDirs = dirs;
             return this;
         }
 

@@ -116,7 +116,7 @@ public class AAToolsActivity extends BaseActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
-                        DataCleanHelper.cleanApplicationData(Util.sApp, Util.sOtherFilePaths);
+                        DataCleanHelper.cleanApplicationData(Util.sApp, Util.sOtherDirs);
                         appRestart();
                     }
                 }).create().show();
