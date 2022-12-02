@@ -3,7 +3,7 @@ package com.ixinrun.aatools
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.View
-import com.ixinrun.lib_aatools.AAToolsMgr
+import com.ixinrun.lib_aatools.AATools
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         findViewById<View>(R.id.open_btn)
                 .setOnClickListener(object : View.OnClickListener {
                     override fun onClick(v: View?) {
-                        AAToolsMgr.open(this@MainActivity)
+                        AATools.open(this@MainActivity)
                     }
                 })
 

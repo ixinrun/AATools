@@ -61,12 +61,12 @@ public class FileViewActivity extends BaseActivity {
     protected void loadData(Bundle savedInstanceState) {
         List<MultiItemEntity> data = new ArrayList<>();
         // 内部私有存储
-        FileFolderItem internalFolder = createdFoldItem("内部私有存储", getCacheDir().getParent());
+        FileFolderItem internalFolder = createFoldItem("内部私有存储", getCacheDir().getParent());
         if (internalFolder != null) {
             data.add(internalFolder);
         }
         // 外部私有存储
-        FileFolderItem externalFolder = createdFoldItem("外部私有存储", getExternalCacheDir().getParent());
+        FileFolderItem externalFolder = createFoldItem("外部私有存储", getExternalCacheDir().getParent());
         if (externalFolder != null) {
             data.add(externalFolder);
         }
@@ -81,7 +81,7 @@ public class FileViewActivity extends BaseActivity {
      * @param name 名字
      * @param path 路径
      */
-    private FileFolderItem createdFoldItem(String name, String path) {
+    private FileFolderItem createFoldItem(String name, String path) {
         if (TextUtils.isEmpty(path)) {
             return null;
         }

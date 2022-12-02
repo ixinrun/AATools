@@ -5,11 +5,15 @@ import android.app.Application;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
+import android.provider.Settings;
 import android.text.TextUtils;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -127,7 +131,15 @@ public class TrackerService extends Service {
      * 启动服务
      */
     public static void start(Context c) {
-        c.startService(new Intent(c, TrackerService.class));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (!Settings.canDrawOverlays(c)) {
+                Toast.makeText(c, "请开启悬浮窗权限", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + c.getPackageName()));
+                c.startActivity(intent);
+            } else {
+                c.startService(new Intent(c, TrackerService.class));
+            }
+        }
     }
 
     /**
