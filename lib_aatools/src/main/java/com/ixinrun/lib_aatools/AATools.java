@@ -33,14 +33,10 @@ public final class AATools {
         }
 
         /**
-         * 崩溃日志设置
-         *
-         * @param savePath 存储路径
-         * @param saveDay  存储天数
-         * @param l        崩溃回调
+         * 崩溃日志回调
          */
-        public Builder setCrashLog(String savePath, double saveDay, CrashHandler.Listener l) {
-            CrashHandler.getInstance().init(Util.sApp, savePath, saveDay, l);
+        public Builder setCrashListener(CrashHandler.Listener l) {
+            CrashHandler.getInstance().setCrashListener(l);
             return this;
         }
 
@@ -64,6 +60,13 @@ public final class AATools {
                 Util.sCustomItems.addAll(Arrays.asList(beans));
             }
             return this;
+        }
+
+        /**
+         * 初始化
+         */
+        public void init() {
+            CrashHandler.getInstance().init();
         }
     }
 

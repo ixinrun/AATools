@@ -14,7 +14,7 @@ class MyApp : Application() {
     override fun onCreate() {
         super.onCreate()
         AATools.with(this)
-            .setCrashLog(null, 7.0, object : CrashHandler.Listener {
+            .setCrashListener(object : CrashHandler.Listener {
                 override fun onExceptionOccurred(ex: Throwable?, exf: File?): Boolean {
                     Handler(Looper.getMainLooper()).post(object : Runnable {
                         override fun run() {
@@ -49,6 +49,6 @@ class MyApp : Application() {
                         }
                     }
                 )
-            )
+            ).init()
     }
 }
