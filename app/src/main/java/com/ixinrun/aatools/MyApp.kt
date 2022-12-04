@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.widget.Toast
 import com.ixinrun.lib_aatools.AATools
 import com.ixinrun.lib_aatools.base.ItemBean
@@ -16,15 +17,23 @@ class MyApp : Application() {
         AATools.with(this)
             .setCrashListener(object : CrashHandler.Listener {
                 override fun onExceptionOccurred(ex: Throwable?, exf: File?): Boolean {
-                    Handler(Looper.getMainLooper()).post(object : Runnable {
-                        override fun run() {
-                            Toast.makeText(
-                                this@MyApp,
-                                "哦吼，发生异常了，赶快上传服务器：\n" + ex.toString(),
-                                Toast.LENGTH_LONG
-                            ).show()
-                        }
-                    })
+                    if(Looper.myLooper() == Looper.getMainLooper()){
+                        Toast.makeText(
+                            this@MyApp,
+                            "哦吼，发生异常了，赶快上传服务器：\n" + ex.toString(),
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }else{
+                        Handler(Looper.getMainLooper()).post(object : Runnable {
+                            override fun run() {
+                                Toast.makeText(
+                                    this@MyApp,
+                                    "哦吼，发生异常了，赶快上传服务器：\n" + ex.toString(),
+                                    Toast.LENGTH_LONG
+                                ).show()
+                            }
+                        })
+                    }
                     return true
                 }
             })

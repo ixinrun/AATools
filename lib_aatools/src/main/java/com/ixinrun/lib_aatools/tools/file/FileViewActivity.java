@@ -3,6 +3,8 @@ package com.ixinrun.lib_aatools.tools.file;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
 import android.view.View;
 
@@ -18,6 +20,7 @@ import com.ixinrun.lib_aatools.base.Util;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executors;
 
 /**
  * 功能描述: 沙盒文件预览
@@ -60,32 +63,42 @@ public class FileViewActivity extends BaseActivity {
 
     @Override
     protected void loadData(Bundle savedInstanceState) {
-        List<MultiItemEntity> data = new ArrayList<>();
-        // 内部私有存储
-        FileFolderItem internalFolder = createFoldItem("内部私有存储", getCacheDir().getParent());
-        if (internalFolder != null) {
-            data.add(internalFolder);
-        }
-
-        // 外部私有存储
-        FileFolderItem externalFolder = createFoldItem("外部私有存储", getExternalCacheDir().getParent());
-        if (externalFolder != null) {
-            data.add(externalFolder);
-        }
-
-        // 其他存储
-        if (Util.sOtherDirs != null) {
-            for (String dir : Util.sOtherDirs) {
-                File f = new File(dir);
-                FileFolderItem otherFolder = createFoldItem(f.getName(), f.getAbsolutePath());
-                if (otherFolder != null) {
-                    data.add(otherFolder);
+        Executors.newSingleThreadExecutor().execute(new Runnable() {
+            @Override
+            public void run() {
+                final List<MultiItemEntity> data = new ArrayList<>();
+                // 内部私有存储
+                FileFolderItem internalFolder = createFoldItem("内部私有存储", getCacheDir().getParent());
+                if (internalFolder != null) {
+                    data.add(internalFolder);
                 }
-            }
-        }
 
-        // 刷新界面
-        mAdapter.setNewData(data);
+                // 外部私有存储
+                FileFolderItem externalFolder = createFoldItem("外部私有存储", getExternalCacheDir().getParent());
+                if (externalFolder != null) {
+                    data.add(externalFolder);
+                }
+
+                // 其他存储
+                if (Util.sOtherDirs != null) {
+                    for (String dir : Util.sOtherDirs) {
+                        File f = new File(dir);
+                        FileFolderItem otherFolder = createFoldItem(f.getName(), f.getAbsolutePath());
+                        if (otherFolder != null) {
+                            data.add(otherFolder);
+                        }
+                    }
+                }
+
+                // 刷新界面
+                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mAdapter.setNewData(data);
+                    }
+                });
+            }
+        });
     }
 
     /**

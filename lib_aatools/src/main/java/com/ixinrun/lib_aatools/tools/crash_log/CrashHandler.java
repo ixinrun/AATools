@@ -69,14 +69,14 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
      */
     @Override
     public void uncaughtException(Thread thread, final Throwable ex) {
-        boolean isDef = true;
+        boolean isDefHandler = true;
         if (ex != null) {
             try {
                 // 异常存储
                 File file = saveCrashInfo2File(mContext, ex);
                 // 异常外抛
                 if (mListener != null) {
-                    isDef = mListener.onExceptionOccurred(ex, file);
+                    isDefHandler = mListener.onExceptionOccurred(ex, file);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -84,7 +84,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         }
 
         // 调用默认的异常处理器处理异常
-        if (isDef && mDefaultHandler != null && mDefaultHandler != this) {
+        if (isDefHandler && mDefaultHandler != null && mDefaultHandler != this) {
             mDefaultHandler.uncaughtException(thread, ex);
         }
     }
