@@ -45,7 +45,11 @@ public class TrackerService extends Service {
 
     class ActivityLifecycle implements Application.ActivityLifecycleCallbacks {
         private final Handler handler = new Handler(Looper.getMainLooper());
-        private boolean isForeground;
+        private Activity resumedAct;
+
+        public Activity getResumedAct() {
+            return resumedAct;
+        }
 
         @Override
         public void onActivityCreated(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {
@@ -57,31 +61,20 @@ public class TrackerService extends Service {
 
         @Override
         public void onActivityResumed(@NonNull Activity activity) {
-            isForeground = true;
-            if (mTrackerWindowManager == null) {
-                return;
-            }
-            mTrackerWindowManager.addView();
-            CharSequence packageName = activity.getPackageName();
-            CharSequence className = activity.getClass().getName();
-            if (!TextUtils.isEmpty(packageName) && !TextUtils.isEmpty(className)) {
-                String pn = packageName.toString();
-                String cn = className.toString();
-                if (cn.startsWith(pn)) {
-                    cn = cn.substring(pn.length());
-                }
-                mTrackerWindowManager.updateFloatingView(pn, cn);
-            }
+            resumedAct = activity;
+            showTracker();
         }
 
         @Override
         public void onActivityPaused(@NonNull Activity activity) {
-            isForeground = false;
+            resumedAct = null;
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    if (!isForeground && mTrackerWindowManager != null) {
-                        mTrackerWindowManager.removeView();
+                    if (resumedAct == null) {
+                        if (mTrackerWindowManager != null) {
+                            mTrackerWindowManager.removeView();
+                        }
                     }
                 }
             }, 200);
@@ -101,12 +94,30 @@ public class TrackerService extends Service {
         }
     }
 
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
+    private void showTracker() {
+        Activity a = mLifecycle.getResumedAct();
+        if (a == null) {
+            return;
+        }
         if (mTrackerWindowManager == null) {
             mTrackerWindowManager = new TrackerWindowManager(this);
         }
         mTrackerWindowManager.addView();
+        CharSequence packageName = a.getPackageName();
+        CharSequence className = a.getClass().getName();
+        if (!TextUtils.isEmpty(packageName) && !TextUtils.isEmpty(className)) {
+            String pn = packageName.toString();
+            String cn = className.toString();
+            if (cn.startsWith(pn)) {
+                cn = cn.substring(pn.length());
+            }
+            mTrackerWindowManager.updateFloatingView(pn, cn);
+        }
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        showTracker();
         return super.onStartCommand(intent, flags, startId);
     }
 
