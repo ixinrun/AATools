@@ -19,7 +19,7 @@ import com.ixinrun.lib_aatools.R;
 import com.ixinrun.lib_aatools.tools.DataCleanHelper;
 import com.ixinrun.lib_aatools.tools.crash_log.CrashLogActivity;
 import com.ixinrun.lib_aatools.tools.file.FileViewActivity;
-import com.ixinrun.lib_aatools.tools.tracker.TrackerUtil;
+import com.ixinrun.lib_aatools.tools.tracker.TrackerService;
 
 import java.util.List;
 
@@ -52,9 +52,9 @@ public class AAToolsActivity extends BaseActivity {
         mCustomToolsFl = findViewById(R.id.custom_tools_fl);
 
         // 创建常用item
-        creatCommonlyTools();
+        createCommonlyTools();
         // 创建自定义item
-        creatCustomTools();
+        createCustomTools();
     }
 
     @Override
@@ -84,8 +84,8 @@ public class AAToolsActivity extends BaseActivity {
     /**
      * 创建常用的工具类
      */
-    private void creatCommonlyTools() {
-        creatItem(mCommonlyToolsFl, new ItemBean(R.drawable.item_crash_log_ic, "崩溃日志", new ItemBean.OnItemClickListener() {
+    private void createCommonlyTools() {
+        createItem(mCommonlyToolsFl, new ItemBean(R.drawable.item_crash_log_ic, "崩溃日志", new ItemBean.OnItemClickListener() {
             @Override
             public boolean onClick(Context context) {
                 CrashLogActivity.startActivity(context);
@@ -93,14 +93,15 @@ public class AAToolsActivity extends BaseActivity {
             }
         }));
 
-        creatItem(mCommonlyToolsFl, new ItemBean(R.drawable.item_tracker_ic, "页面追踪", new ItemBean.OnItemClickListener() {
+        createItem(mCommonlyToolsFl, new ItemBean(R.drawable.item_tracker_ic, "页面追踪", new ItemBean.OnItemClickListener() {
             @Override
             public boolean onClick(Context context) {
-                return TrackerUtil.openTracker(context);
+                TrackerService.start(context);
+                return false;
             }
         }));
 
-        creatItem(mCommonlyToolsFl, new ItemBean(R.drawable.item_files_view_ic, "沙盒浏览", new ItemBean.OnItemClickListener() {
+        createItem(mCommonlyToolsFl, new ItemBean(R.drawable.item_files_view_ic, "沙盒文件", new ItemBean.OnItemClickListener() {
             @Override
             public boolean onClick(Context context) {
                 FileViewActivity.startActivity(context);
@@ -108,14 +109,14 @@ public class AAToolsActivity extends BaseActivity {
             }
         }));
 
-        creatItem(mCommonlyToolsFl, new ItemBean(R.drawable.item_data_clean_ic, "缓存清除", new ItemBean.OnItemClickListener() {
+        createItem(mCommonlyToolsFl, new ItemBean(R.drawable.item_data_clean_ic, "缓存清除", new ItemBean.OnItemClickListener() {
             @Override
             public boolean onClick(Context context) {
                 new AlertDialog.Builder(context).setTitle("注意").setMessage("使用缓存清除功能，将会清除当前应用保存的所有数据，需谨慎操作，清除完成后应用也将会自动重启，确定这样做吗？").setNegativeButton("取消", null).setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
-                        DataCleanHelper.cleanApplicationData(Util.sApp, Util.sFilePaths);
+                        DataCleanHelper.cleanApplicationData(Util.sApp, Util.sOtherDirs);
                         appRestart();
                     }
                 }).create().show();
@@ -124,7 +125,7 @@ public class AAToolsActivity extends BaseActivity {
             }
         }));
 
-        creatItem(mCommonlyToolsFl, new ItemBean(R.drawable.item_app_restart_ic, "应用重启", new ItemBean.OnItemClickListener() {
+        createItem(mCommonlyToolsFl, new ItemBean(R.drawable.item_app_restart_ic, "应用重启", new ItemBean.OnItemClickListener() {
             @Override
             public boolean onClick(Context context) {
                 new AlertDialog.Builder(mContext).setTitle("重启应用").setMessage("确定重启当前应用吗？").setNegativeButton("取消", null).setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -139,7 +140,7 @@ public class AAToolsActivity extends BaseActivity {
             }
         }));
 
-        creatItem(mCommonlyToolsFl, new ItemBean(R.drawable.item_strict_mode_ic, "严苛模式", new ItemBean.OnItemClickListener() {
+        createItem(mCommonlyToolsFl, new ItemBean(R.drawable.item_strict_mode_ic, "严苛模式", new ItemBean.OnItemClickListener() {
             @Override
             public boolean onClick(Context context) {
                 new AlertDialog.Builder(context).setTitle("注意").setMessage("严苛模式用于帮助开发者调试程序的顺滑性，使用过程中配合控制台过滤StrictMode日志。" + "由于企业级开发以业务为主，程序臃肿，需开发者逐步优化。此模式开启后可能不利于QA正常测试，确定开启吗？").setNegativeButton("取消", null).setPositiveButton("确定", new DialogInterface.OnClickListener() {
@@ -167,24 +168,21 @@ public class AAToolsActivity extends BaseActivity {
     /**
      * 创建私有的工具类
      */
-    private void creatCustomTools() {
+    private void createCustomTools() {
         List<ItemBean> list = Util.sCustomItems;
         if (list == null || list.isEmpty()) {
             return;
         }
         mCustomToolsLl.setVisibility(View.VISIBLE);
         for (ItemBean bean : list) {
-            creatItem(mCustomToolsFl, bean);
+            createItem(mCustomToolsFl, bean);
         }
     }
 
     /**
-     * creat item
-     *
-     * @param root
-     * @param bean
+     * create item
      */
-    private void creatItem(ViewGroup root, final ItemBean bean) {
+    private void createItem(ViewGroup root, final ItemBean bean) {
         if (bean == null) {
             return;
         }

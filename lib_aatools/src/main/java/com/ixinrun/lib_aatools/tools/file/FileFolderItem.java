@@ -1,9 +1,9 @@
 package com.ixinrun.lib_aatools.tools.file;
 
+import static com.ixinrun.lib_aatools.tools.file.FileViewAdapter.TYPE_LEVER_100;
+
 import com.chad.library.adapter.base.entity.AbstractExpandableItem;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
-
-import static com.ixinrun.lib_aatools.tools.file.FileViewAdapter.TYPE_LEVER_100;
 
 /**
  * 功能描述: 文件夹实体类
@@ -12,10 +12,12 @@ import static com.ixinrun.lib_aatools.tools.file.FileViewAdapter.TYPE_LEVER_100;
  * @author ixinrun
  * @date 2020/9/27
  */
-public class FileFolderItem extends AbstractExpandableItem<FileItem> implements MultiItemEntity {
+public class FileFolderItem extends AbstractExpandableItem<MultiItemEntity> implements MultiItemEntity {
 
     private String folderName;
     private String folderPath;
+    private int top;
+    private int left;
 
     public FileFolderItem(String name, String path) {
         this.folderName = name;
@@ -36,6 +38,22 @@ public class FileFolderItem extends AbstractExpandableItem<FileItem> implements 
 
     public void setFolderPath(String folderPath) {
         this.folderPath = folderPath;
+    }
+
+    public int getTop() {
+        return top;
+    }
+
+    public void setTop(int top) {
+        this.top = top;
+    }
+
+    public int getLeft() {
+        return left;
+    }
+
+    public void setLeft(int left) {
+        this.left = left;
     }
 
     @Override

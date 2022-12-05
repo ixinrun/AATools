@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/common_bg"
@@ -11,24 +10,12 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:layout_marginBottom="@dimen/layout_interval"
         android:background="?attr/colorPrimary"
         app:navigationIcon="@drawable/toolbar_back_ic"
-        app:title="沙盒文件预览" />
-
-    <TextView
-        android:id="@+id/empty_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="NULL !!!"
-        android:textColor="@color/text_color_medium"
-        android:textSize="16dp"
-        android:visibility="gone"
-        tools:visibility="visible" />
+        app:title="沙盒文件" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/file_rv"
+        android:id="@+id/rv"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

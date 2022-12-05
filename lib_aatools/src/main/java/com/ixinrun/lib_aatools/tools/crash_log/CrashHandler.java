@@ -1,14 +1,12 @@
 package com.ixinrun.lib_aatools.tools.crash_log;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Environment;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import android.text.TextUtils;
+
+import com.ixinrun.lib_aatools.base.Util;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -30,7 +28,6 @@ import java.util.Map;
  */
 public class CrashHandler implements Thread.UncaughtExceptionHandler {
     private Context mContext;
-    private String mSavePath;
     private Listener mListener;
 
     /**
@@ -38,32 +35,30 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
      */
     private Thread.UncaughtExceptionHandler mDefaultHandler;
 
-    @SuppressLint("StaticFieldLeak")
-    private static CrashHandler INSTANCE = new CrashHandler();
+    private static CrashHandler INSTANCE;
 
     public static CrashHandler getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new CrashHandler();
+        }
         return INSTANCE;
     }
 
-    /**
-     * 初始化
-     *
-     * @param context  上下文
-     * @param savePath 崩溃日志保存路径
-     * @param saveDay  崩溃路径保存天数
-     * @param listener 回调
-     */
-    public void init(@NonNull Context context, @Nullable String savePath, double saveDay, @Nullable Listener listener) {
-        this.mContext = context;
-        this.mSavePath = savePath;
-        this.mListener = listener;
-
+    public void init() {
+        this.mContext = Util.sApp;
         // 获取默认的UncaughtException处理器
-        mDefaultHandler = Thread.getDefaultUncaughtExceptionHandler();
+        this.mDefaultHandler = Thread.getDefaultUncaughtExceptionHandler();
         // 设置CrashHandler为程序的默认处理器
         Thread.setDefaultUncaughtExceptionHandler(this);
-        // 清除历史崩溃日志
-        autoClear(saveDay);
+        // 日志文件默认保留一周
+        autoClear(7.0);
+    }
+
+    /**
+     * 崩溃回调
+     */
+    public void setCrashListener(Listener listener) {
+        this.mListener = listener;
     }
 
     /**
@@ -74,14 +69,14 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
      */
     @Override
     public void uncaughtException(Thread thread, final Throwable ex) {
-        boolean isDef = true;
+        boolean isDefHandler = true;
         if (ex != null) {
             try {
                 // 异常存储
                 File file = saveCrashInfo2File(mContext, ex);
                 // 异常外抛
                 if (mListener != null) {
-                    isDef = mListener.onExceptionOccurred(ex, file);
+                    isDefHandler = mListener.onExceptionOccurred(ex, file);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -89,7 +84,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         }
 
         // 调用默认的异常处理器处理异常
-        if (isDef && mDefaultHandler != null && mDefaultHandler != this) {
+        if (isDefHandler && mDefaultHandler != null && mDefaultHandler != this) {
             mDefaultHandler.uncaughtException(thread, ex);
         }
     }
@@ -200,7 +195,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
      * @return
      */
     public String getCrashFilesPath() {
-        return !TextUtils.isEmpty(mSavePath) ? mSavePath : mContext.getExternalFilesDir("logs") + File.separator;
+        return mContext.getExternalFilesDir("logs") + File.separator;
     }
 
     /**

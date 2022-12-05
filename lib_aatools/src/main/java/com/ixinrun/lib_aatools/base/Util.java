@@ -2,6 +2,7 @@ package com.ixinrun.lib_aatools.base;
 
 import android.app.Application;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,9 +16,7 @@ public class Util {
 
     public static Application sApp;
 
-    public static String[] sFilePaths;
+    public static String[] sOtherDirs;
 
-    public static List<ItemBean> sCustomItems;
-
-
+    public static List<ItemBean> sCustomItems = new ArrayList<>();
 }

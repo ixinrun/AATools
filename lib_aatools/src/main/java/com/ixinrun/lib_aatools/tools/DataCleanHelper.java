@@ -75,13 +75,28 @@ public class DataCleanHelper {
     }
 
     /**
-     * 删除方法 这里只会删除某个文件夹下的文件，如果传入的directory是个文件，将不做处理 * * @param directory
+     * 删除方法 这里只会删除某个文件夹下的文件
      */
     private static void deleteFilesByDirectory(File directory) {
         if (directory != null && directory.exists() && directory.isDirectory()) {
-            for (File item : directory.listFiles()) {
-                item.delete();
+            deleteFile(directory, false);
+        }
+    }
+
+    private static void deleteFile(File file, boolean isDelete) {
+        if (file == null || !file.exists()) {
+            return;
+        }
+        if (file.isDirectory()) {
+            File[] files = file.listFiles();
+            if (files != null) {
+                for (File f : files) {
+                    deleteFile(f, true);
+                }
             }
+        }
+        if (isDelete) {
+            file.delete();
         }
     }
 
