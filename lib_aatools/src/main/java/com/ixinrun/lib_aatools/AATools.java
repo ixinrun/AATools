@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.ixinrun.lib_aatools.base.AAToolsActivity;
+import com.ixinrun.lib_aatools.base.ActivityLifecycle;
 import com.ixinrun.lib_aatools.base.ItemBean;
 import com.ixinrun.lib_aatools.base.Util;
 import com.ixinrun.lib_aatools.tools.crash_log.CrashHandler;
@@ -66,6 +67,7 @@ public final class AATools {
          * 初始化
          */
         public void init() {
+            Util.sApp.registerActivityLifecycleCallbacks(new ActivityLifecycle());
             CrashHandler.getInstance().init();
         }
     }
