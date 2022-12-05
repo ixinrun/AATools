@@ -218,13 +218,13 @@ public class AAToolsActivity extends BaseActivity {
      * 应用重启
      */
     private void appRestart() {
-        // 杀掉进程
-        android.os.Process.killProcess(android.os.Process.myPid());
-        System.exit(0);
-
         // 重启
         final Intent intent = getPackageManager().getLaunchIntentForPackage(getPackageName());
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
+
+        // 杀掉进程
+        android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(0);
     }
 }
