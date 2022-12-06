@@ -2,20 +2,26 @@ package com.ixinrun.lib_aatools.base;
 
 import android.app.Activity;
 import android.app.Application;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.text.TextUtils;
+import android.provider.Settings;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.ixinrun.lib_aatools.tools.tracker.TrackerWindowManager;
+import com.ixinrun.lib_aatools.tools.float_view.DeveloperBall;
+import com.ixinrun.lib_aatools.tools.float_view.PageTracker;
 
 public class ActivityLifecycle implements Application.ActivityLifecycleCallbacks {
     private final Handler handler = new Handler(Looper.getMainLooper());
     private Activity resumedAct;
-    private TrackerWindowManager mTrackerWindowManager;
+    private DeveloperBall developerBall;
+    private PageTracker tracker;
 
     public Activity getResumedAct() {
         return resumedAct;
@@ -23,7 +29,13 @@ public class ActivityLifecycle implements Application.ActivityLifecycleCallbacks
 
     @Override
     public void onActivityCreated(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (!Settings.canDrawOverlays(activity)) {
+                Toast.makeText(activity, "请开启悬浮窗权限", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + activity.getPackageName()));
+                activity.startActivity(intent);
+            }
+        }
     }
 
     @Override
@@ -34,7 +46,15 @@ public class ActivityLifecycle implements Application.ActivityLifecycleCallbacks
     @Override
     public void onActivityResumed(@NonNull Activity activity) {
         resumedAct = activity;
-        showTracker();
+        if (developerBall == null) {
+            developerBall = new DeveloperBall(activity);
+        }
+        developerBall.show();
+
+        if (tracker == null) {
+            tracker = new PageTracker(activity);
+        }
+        tracker.showAt(activity);
     }
 
     @Override
@@ -44,8 +64,11 @@ public class ActivityLifecycle implements Application.ActivityLifecycleCallbacks
             @Override
             public void run() {
                 if (resumedAct == null) {
-                    if (mTrackerWindowManager != null) {
-                        mTrackerWindowManager.removeView();
+                    if (developerBall != null) {
+                        developerBall.dismiss();
+                    }
+                    if (tracker != null) {
+                        tracker.dismiss();
                     }
                 }
             }
@@ -65,26 +88,5 @@ public class ActivityLifecycle implements Application.ActivityLifecycleCallbacks
     @Override
     public void onActivityDestroyed(@NonNull Activity activity) {
 
-    }
-
-    private void showTracker() {
-        Activity a = getResumedAct();
-        if (a == null) {
-            return;
-        }
-        if (mTrackerWindowManager == null) {
-            mTrackerWindowManager = new TrackerWindowManager(a);
-        }
-        mTrackerWindowManager.addView();
-        CharSequence packageName = a.getPackageName();
-        CharSequence className = a.getClass().getName();
-        if (!TextUtils.isEmpty(packageName) && !TextUtils.isEmpty(className)) {
-            String pn = packageName.toString();
-            String cn = className.toString();
-            if (cn.startsWith(pn)) {
-                cn = cn.substring(pn.length());
-            }
-            mTrackerWindowManager.updateFloatingView(pn, cn);
-        }
     }
 }

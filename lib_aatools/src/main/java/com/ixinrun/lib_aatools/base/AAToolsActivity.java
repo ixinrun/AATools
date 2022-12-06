@@ -19,7 +19,6 @@ import com.ixinrun.lib_aatools.R;
 import com.ixinrun.lib_aatools.tools.DataCleanHelper;
 import com.ixinrun.lib_aatools.tools.crash_log.CrashLogActivity;
 import com.ixinrun.lib_aatools.tools.file.FileViewActivity;
-import com.ixinrun.lib_aatools.tools.tracker.TrackerService;
 
 import java.util.List;
 
@@ -96,7 +95,7 @@ public class AAToolsActivity extends BaseActivity {
         createItem(mCommonlyToolsFl, new ItemBean(R.drawable.item_tracker_ic, "页面追踪", new ItemBean.OnItemClickListener() {
             @Override
             public boolean onClick(Context context) {
-                TrackerService.start(context);
+                // todo 显示页面追踪
                 return false;
             }
         }));

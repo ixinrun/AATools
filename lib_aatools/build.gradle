@@ -28,6 +28,4 @@ dependencies {
     implementation 'com.google.android:flexbox:1.0.0'
     //万能适配器
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46'
-    //上拉下拉刷新
-    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
 }
