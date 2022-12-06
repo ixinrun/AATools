@@ -1,5 +1,6 @@
 package com.ixinrun.lib_aatools.base;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -19,6 +20,7 @@ import com.ixinrun.lib_aatools.R;
 import com.ixinrun.lib_aatools.tools.DataCleanHelper;
 import com.ixinrun.lib_aatools.tools.crash_log.CrashLogActivity;
 import com.ixinrun.lib_aatools.tools.file.FileViewActivity;
+import com.ixinrun.lib_aatools.tools.float_view.PageTracker;
 
 import java.util.List;
 
@@ -95,7 +97,25 @@ public class AAToolsActivity extends BaseActivity {
         createItem(mCommonlyToolsFl, new ItemBean(R.drawable.item_tracker_ic, "页面追踪", new ItemBean.OnItemClickListener() {
             @Override
             public boolean onClick(Context context) {
-                // todo 显示页面追踪
+                ActivityLifecycleUtil.getInstance().addForegroundListener(new ActivityLifecycleUtil.OnForegroundListener() {
+                    PageTracker tracker;
+
+                    @Override
+                    public void onForeground(Activity act) {
+                        if (tracker == null) {
+                            tracker = new PageTracker(act);
+                        }
+                        tracker.showAt(act);
+                    }
+
+                    @Override
+                    public void onDismiss() {
+                        if (tracker != null) {
+                            tracker.dismiss();
+                        }
+                    }
+                });
+
                 return false;
             }
         }));
