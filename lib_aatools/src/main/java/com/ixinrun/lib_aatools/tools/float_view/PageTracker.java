@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ixinrun.lib_aatools.R;
+import com.ixinrun.lib_aatools.base.ActivityLifecycleUtil;
 import com.ixinrun.lib_aatools.base.BaseFloatingView;
 
 /**
@@ -22,6 +23,11 @@ public class PageTracker extends BaseFloatingView {
     private TextView mClassNameTv;
     private ImageView mCloseIv;
 
+    /**
+     * 是否关闭
+     */
+    private boolean isClose;
+
     public PageTracker(Context context) {
         super(context);
         inflate(context, R.layout.tracker_floating_layout, this);
@@ -31,6 +37,24 @@ public class PageTracker extends BaseFloatingView {
         mCloseIv.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                isClose = true;
+                dismiss();
+            }
+        });
+
+        // 前台activity监听
+        ActivityLifecycleUtil.getInstance().addForegroundListener(new ActivityLifecycleUtil.OnForegroundListener() {
+
+            @Override
+            public void onForeground(Activity act) {
+                if (isClose) {
+                    return;
+                }
+                showAt(act);
+            }
+
+            @Override
+            public void onDismiss() {
                 dismiss();
             }
         });
@@ -39,7 +63,7 @@ public class PageTracker extends BaseFloatingView {
     /**
      * 显示在某个页面
      */
-    public void showAt(Activity a){
+    public void showAt(Activity a) {
         CharSequence packageName = a.getPackageName();
         CharSequence className = a.getClass().getName();
         if (!TextUtils.isEmpty(packageName) && !TextUtils.isEmpty(className)) {
@@ -52,5 +76,6 @@ public class PageTracker extends BaseFloatingView {
             mClassNameTv.setText(cn);
         }
         show();
+        isClose = false;
     }
 }

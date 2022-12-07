@@ -33,24 +33,7 @@ public final class AATools {
 
         public Builder(Application app) {
             Util.sApp = app;
-            ActivityLifecycleUtil.getInstance().register(app).addForegroundListener(new ActivityLifecycleUtil.OnForegroundListener() {
-                DeveloperBall devBall;
-
-                @Override
-                public void onForeground(Activity act) {
-                    if (devBall == null) {
-                        devBall = new DeveloperBall(act);
-                    }
-                    devBall.show();
-                }
-
-                @Override
-                public void onDismiss() {
-                    if (devBall != null) {
-                        devBall.dismiss();
-                    }
-                }
-            });
+            ActivityLifecycleUtil.getInstance().register(app);
         }
 
         /**
@@ -88,6 +71,30 @@ public final class AATools {
          */
         public void init() {
             CrashHandler.getInstance().init();
+            if (BuildConfig.DEBUG) {
+                ActivityLifecycleUtil.getInstance()
+                        .addForegroundListener(new ActivityLifecycleUtil.OnForegroundListener() {
+                            DeveloperBall devBall;
+
+                            @Override
+                            public void onForeground(Activity act) {
+                                if (!Util.hasOverlayPermission(act)) {
+                                    return;
+                                }
+                                if (devBall == null) {
+                                    devBall = new DeveloperBall(act);
+                                }
+                                devBall.show();
+                            }
+
+                            @Override
+                            public void onDismiss() {
+                                if (devBall != null) {
+                                    devBall.dismiss();
+                                }
+                            }
+                        });
+            }
         }
     }
 

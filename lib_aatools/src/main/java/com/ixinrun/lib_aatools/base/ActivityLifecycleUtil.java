@@ -66,13 +66,6 @@ public class ActivityLifecycleUtil {
 
         @Override
         public void onActivityCreated(@NonNull Activity activity, @Nullable Bundle savedInstanceState) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (!Settings.canDrawOverlays(activity)) {
-                    Toast.makeText(activity, "请开启悬浮窗权限", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:" + activity.getPackageName()));
-                    activity.startActivity(intent);
-                }
-            }
         }
 
         @Override

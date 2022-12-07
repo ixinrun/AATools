@@ -1,6 +1,5 @@
 package com.ixinrun.lib_aatools.base;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -95,27 +94,14 @@ public class AAToolsActivity extends BaseActivity {
         }));
 
         createItem(mCommonlyToolsFl, new ItemBean(R.drawable.item_tracker_ic, "页面追踪", new ItemBean.OnItemClickListener() {
+            PageTracker tracker;
+
             @Override
             public boolean onClick(Context context) {
-                ActivityLifecycleUtil.getInstance().addForegroundListener(new ActivityLifecycleUtil.OnForegroundListener() {
-                    PageTracker tracker;
-
-                    @Override
-                    public void onForeground(Activity act) {
-                        if (tracker == null) {
-                            tracker = new PageTracker(act);
-                        }
-                        tracker.showAt(act);
-                    }
-
-                    @Override
-                    public void onDismiss() {
-                        if (tracker != null) {
-                            tracker.dismiss();
-                        }
-                    }
-                });
-
+                if (tracker == null) {
+                    tracker = new PageTracker(context);
+                }
+                tracker.showAt(AAToolsActivity.this);
                 return false;
             }
         }));

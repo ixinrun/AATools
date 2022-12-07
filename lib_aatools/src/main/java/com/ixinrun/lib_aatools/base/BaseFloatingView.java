@@ -183,13 +183,13 @@ public class BaseFloatingView extends FrameLayout {
         private float destinationX;
         private float destinationY;
         private long startingTime;
-        private WindowManager.LayoutParams windowParams;
+        private WindowManager.LayoutParams layoutParams;
 
-        void start(WindowManager.LayoutParams windowParams, float x, float y) {
+        void start(WindowManager.LayoutParams layoutParams, float x, float y) {
             this.destinationX = x;
             this.destinationY = y;
             this.startingTime = System.currentTimeMillis();
-            this.windowParams = windowParams;
+            this.layoutParams = layoutParams;
             mHandler.post(this);
         }
 
@@ -199,10 +199,10 @@ public class BaseFloatingView extends FrameLayout {
                 return;
             }
             float progress = Math.min(1, (System.currentTimeMillis() - startingTime) / 400f);
-            float deltaX = (destinationX - windowParams.x) * progress;
-            float deltaY = (destinationY - windowParams.y) * progress;
+            float deltaX = (destinationX - layoutParams.x) * progress;
+            float deltaY = (destinationY - layoutParams.y) * progress;
 
-            updatePosition(windowParams.x + deltaX, windowParams.y + deltaY);
+            updatePosition(layoutParams.x + deltaX, layoutParams.y + deltaY);
 
             if (progress < 1) {
                 mHandler.post(this);

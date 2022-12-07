@@ -22,7 +22,7 @@ public class DeveloperBall extends BaseFloatingView {
     public DeveloperBall(Context context) {
         super(context);
         ImageView iv = new ImageView(context);
-        ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(100, 100);
+        ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(120, 120);
         iv.setLayoutParams(lp);
         iv.setBackgroundResource(R.drawable.developer_ic);
         addView(iv);
