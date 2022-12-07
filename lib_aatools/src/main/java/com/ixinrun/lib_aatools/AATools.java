@@ -71,30 +71,30 @@ public final class AATools {
          */
         public void init() {
             CrashHandler.getInstance().init();
-            if (BuildConfig.DEBUG) {
-                ActivityLifecycleUtil.getInstance()
-                        .addForegroundListener(new ActivityLifecycleUtil.OnForegroundListener() {
-                            DeveloperBall devBall;
+            ActivityLifecycleUtil.getInstance().addForegroundListener(new ActivityLifecycleUtil.OnForegroundListener() {
+                DeveloperBall ball;
 
-                            @Override
-                            public void onForeground(Activity act) {
-                                if (!Util.hasOverlayPermission(act)) {
-                                    return;
-                                }
-                                if (devBall == null) {
-                                    devBall = new DeveloperBall(act);
-                                }
-                                devBall.show();
-                            }
+                @Override
+                public void onForeground(Activity act) {
+                    if (!BuildConfig.DEBUG) {
+                        return;
+                    }
+                    if (!Util.hasOverlayPermission(act)) {
+                        return;
+                    }
+                    if (ball == null) {
+                        ball = new DeveloperBall(act);
+                    }
+                    ball.show();
+                }
 
-                            @Override
-                            public void onDismiss() {
-                                if (devBall != null) {
-                                    devBall.dismiss();
-                                }
-                            }
-                        });
-            }
+                @Override
+                public void onDismiss() {
+                    if (ball != null) {
+                        ball.dismiss();
+                    }
+                }
+            });
         }
     }
 

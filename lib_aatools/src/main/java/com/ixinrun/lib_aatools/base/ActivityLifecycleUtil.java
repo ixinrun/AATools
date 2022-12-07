@@ -2,14 +2,9 @@ package com.ixinrun.lib_aatools.base;
 
 import android.app.Activity;
 import android.app.Application;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.provider.Settings;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
