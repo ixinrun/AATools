@@ -45,69 +45,83 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/commonly_tools_ll"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@color/color_white"
-        android:orientation="vertical"
-        android:padding="10dp">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="常用工具"
-            android:textColor="@color/text_color_medium"
-            android:textSize="16dp"
-            android:textStyle="bold" />
-
-        <com.google.android.flexbox.FlexboxLayout
-            android:id="@+id/commonly_tools_fl"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:flexDirection="row"
-            app:flexWrap="wrap" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/commonly_tools_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/color_white"
+                android:orientation="vertical"
+                android:padding="10dp">
 
-    <LinearLayout
-        android:id="@+id/custom_tools_ll"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@color/color_white"
-        android:orientation="vertical"
-        android:padding="10dp"
-        android:visibility="gone"
-        tools:visibility="visible">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="常用工具"
+                    android:textColor="@color/text_color_medium"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="自定义工具"
-            android:textColor="@color/text_color_medium"
-            android:textSize="16dp"
-            android:textStyle="bold" />
+                <com.google.android.flexbox.FlexboxLayout
+                    android:id="@+id/commonly_tools_fl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:flexDirection="row"
+                    app:flexWrap="wrap" />
 
-        <com.google.android.flexbox.FlexboxLayout
-            android:id="@+id/custom_tools_fl"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:flexDirection="row"
-            app:flexWrap="wrap" />
+            </LinearLayout>
 
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/custom_tools_ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/color_white"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:visibility="gone"
+                tools:visibility="visible">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal|bottom"
-        android:paddingBottom="10dp"
-        android:text="author: @ixinrun"
-        android:textColor="@color/text_color_tiny"
-        android:textSize="12dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="自定义工具"
+                    android:textColor="@color/text_color_medium"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <com.google.android.flexbox.FlexboxLayout
+                    android:id="@+id/custom_tools_fl"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:flexDirection="row"
+                    app:flexWrap="wrap" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:padding="10dp"
+                android:text="author: @ixinrun"
+                android:textColor="@color/text_color_tiny"
+                android:textSize="12dp" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
 
 </LinearLayout>
