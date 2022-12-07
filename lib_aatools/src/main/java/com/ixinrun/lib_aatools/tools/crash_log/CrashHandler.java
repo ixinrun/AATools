@@ -27,7 +27,6 @@ import java.util.Map;
  * @date 2018/8/10
  */
 public class CrashHandler implements Thread.UncaughtExceptionHandler {
-    private Context mContext;
     private Listener mListener;
 
     /**
@@ -45,7 +44,6 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
     }
 
     public void init() {
-        this.mContext = Util.sApp;
         // 获取默认的UncaughtException处理器
         this.mDefaultHandler = Thread.getDefaultUncaughtExceptionHandler();
         // 设置CrashHandler为程序的默认处理器
@@ -73,7 +71,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         if (ex != null) {
             try {
                 // 异常存储
-                File file = saveCrashInfo2File(mContext, ex);
+                File file = saveCrashInfo2File(Util.sApp, ex);
                 // 异常外抛
                 if (mListener != null) {
                     isDefHandler = mListener.onExceptionOccurred(ex, file);
@@ -195,7 +193,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
      * @return
      */
     public String getCrashFilesPath() {
-        return mContext.getExternalFilesDir("logs") + File.separator;
+        return Util.sApp.getExternalFilesDir("logs") + File.separator;
     }
 
     /**

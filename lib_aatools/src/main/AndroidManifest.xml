@@ -27,8 +27,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/DevelopToolsTheme" />
 
-        <service android:name="com.ixinrun.lib_aatools.tools.tracker.TrackerService" />
-
     </application>
 
 </manifest>

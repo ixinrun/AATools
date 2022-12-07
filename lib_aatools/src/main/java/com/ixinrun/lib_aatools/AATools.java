@@ -1,13 +1,16 @@
 package com.ixinrun.lib_aatools;
 
+import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 
 import com.ixinrun.lib_aatools.base.AAToolsActivity;
+import com.ixinrun.lib_aatools.base.ActivityLifecycleUtil;
 import com.ixinrun.lib_aatools.base.ItemBean;
 import com.ixinrun.lib_aatools.base.Util;
 import com.ixinrun.lib_aatools.tools.crash_log.CrashHandler;
+import com.ixinrun.lib_aatools.tools.float_view.DeveloperBall;
 
 import java.util.Arrays;
 
@@ -30,6 +33,7 @@ public final class AATools {
 
         public Builder(Application app) {
             Util.sApp = app;
+            ActivityLifecycleUtil.getInstance().register(app);
         }
 
         /**
@@ -67,6 +71,30 @@ public final class AATools {
          */
         public void init() {
             CrashHandler.getInstance().init();
+            ActivityLifecycleUtil.getInstance().addForegroundListener(new ActivityLifecycleUtil.OnForegroundListener() {
+                DeveloperBall ball;
+
+                @Override
+                public void onForeground(Activity act) {
+                    if (!BuildConfig.DEBUG) {
+                        return;
+                    }
+                    if (!Util.hasOverlayPermission(act)) {
+                        return;
+                    }
+                    if (ball == null) {
+                        ball = new DeveloperBall(act);
+                    }
+                    ball.show();
+                }
+
+                @Override
+                public void onDismiss() {
+                    if (ball != null) {
+                        ball.dismiss();
+                    }
+                }
+            });
         }
     }
 
