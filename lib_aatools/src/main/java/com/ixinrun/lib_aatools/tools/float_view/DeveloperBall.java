@@ -27,7 +27,7 @@ public class DeveloperBall extends BaseFloatingView {
         iv.setBackgroundResource(R.drawable.developer_ic);
         addView(iv);
 
-        setStartPosition(50, 50);
+        setStartPosition(50, 250);
         isAttachEdge(true);
         setShallow(true, 0.6f);
         setOnFloatViewClickListener(new OnClickListener() {

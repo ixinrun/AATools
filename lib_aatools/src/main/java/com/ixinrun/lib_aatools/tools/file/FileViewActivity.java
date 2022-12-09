@@ -36,12 +36,13 @@ public class FileViewActivity extends BaseActivity {
 
     @Override
     protected int getContentView() {
-        return R.layout.file_view_activity;
+        return R.layout.common_list_activity;
     }
 
     @Override
     protected void initView() {
         mToolbar = findViewById(R.id.toolbar);
+        mToolbar.setTitle("沙盒文件");
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mRv = findViewById(R.id.rv);

@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.google.android.flexbox.FlexboxLayout;
 import com.ixinrun.lib_aatools.R;
 import com.ixinrun.lib_aatools.tools.DataCleanHelper;
+import com.ixinrun.lib_aatools.tools.activity_stack.ActivityStackActivity;
 import com.ixinrun.lib_aatools.tools.crash_log.CrashLogActivity;
 import com.ixinrun.lib_aatools.tools.file.FileViewActivity;
 import com.ixinrun.lib_aatools.tools.float_view.PageTracker;
@@ -201,8 +202,7 @@ public class AAToolsActivity extends BaseActivity {
         createItem(mCommonlyToolsFl, new ItemBean(R.drawable.item_activity_stack_ic, "Activity栈", new ItemBean.OnItemClickListener() {
             @Override
             public boolean onClick(Context context) {
-
-                // todo activity栈
+                ActivityStackActivity.startActivity(context);
                 return false;
             }
         }));
