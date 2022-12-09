@@ -6,9 +6,16 @@
     android:background="@color/color_white"
     android:orientation="vertical"
     android:paddingLeft="@dimen/layout_padding"
-    android:paddingTop="5dp"
-    android:paddingRight="@dimen/layout_padding"
-    android:paddingBottom="5dp">
+    android:paddingRight="@dimen/layout_padding">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="↑"
+        android:textColor="@color/text_color_tiny"
+        android:textSize="16dp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/name_tv"
@@ -17,6 +24,14 @@
         android:textColor="@color/text_color_medium"
         android:textSize="14dp"
         android:textStyle="bold"
+        tools:text="com.ixinrun.aatools.MainAct" />
+
+    <TextView
+        android:id="@+id/full_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_color_tiny"
+        android:textSize="12dp"
         tools:text="com.ixinrun.aatools.MainAct" />
 
     <RelativeLayout

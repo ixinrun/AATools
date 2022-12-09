@@ -9,11 +9,9 @@ import android.os.Looper;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class ActivityLifecycleUtil {
     private final List<OnForegroundListener> mListeners = new ArrayList<>();
@@ -69,12 +67,12 @@ public class ActivityLifecycleUtil {
     public static class ActivityLog {
         public String name;
         public String tag;
-        public String time;
+        public Date time;
 
-        public ActivityLog(String name, String tag, String time) {
+        public ActivityLog(String name, String tag) {
             this.name = name;
             this.tag = tag;
-            this.time = time;
+            this.time = new Date();
         }
     }
 
@@ -83,8 +81,7 @@ public class ActivityLifecycleUtil {
         private boolean isForeground;
 
         private void log(Activity activity, String tag) {
-            mActivityLogs.add(0, new ActivityLog(activity.getClass().getSimpleName(), tag,
-                    new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date())));
+            mActivityLogs.add(0, new ActivityLog(activity.getClass().getName(), tag));
         }
 
         @Override
@@ -135,6 +132,9 @@ public class ActivityLifecycleUtil {
         @Override
         public void onActivityDestroyed(@NonNull Activity activity) {
             log(activity, "onActivityDestroyed");
+            if (mActivityLogs.size() > 500) {
+                mActivityLogs.subList(0, mActivityLogs.size() - 500).clear();
+            }
         }
     }
 }
