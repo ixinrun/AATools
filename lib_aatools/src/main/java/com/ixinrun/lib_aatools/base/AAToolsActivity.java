@@ -4,8 +4,10 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 import com.google.android.flexbox.FlexboxLayout;
 import com.ixinrun.lib_aatools.R;
 import com.ixinrun.lib_aatools.tools.DataCleanHelper;
+import com.ixinrun.lib_aatools.tools.activity_stack.ActivityStackActivity;
 import com.ixinrun.lib_aatools.tools.crash_log.CrashLogActivity;
 import com.ixinrun.lib_aatools.tools.file.FileViewActivity;
 import com.ixinrun.lib_aatools.tools.float_view.PageTracker;
@@ -165,6 +168,50 @@ public class AAToolsActivity extends BaseActivity {
                     }
                 }).create().show();
 
+                return false;
+            }
+        }));
+
+        createItem(mCommonlyToolsFl, new ItemBean(R.drawable.item_app_detail_ic, "应用详情", new ItemBean.OnItemClickListener() {
+            @Override
+            public boolean onClick(Context context) {
+                Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:" + context.getPackageName()));
+                startActivity(intent);
+                return false;
+            }
+        }));
+
+        createItem(mCommonlyToolsFl, new ItemBean(R.drawable.item_device_info_ic, "设备信息", new ItemBean.OnItemClickListener() {
+            @Override
+            public boolean onClick(Context context) {
+                Intent intent = new Intent(Settings.ACTION_DEVICE_INFO_SETTINGS);
+                startActivity(intent);
+                return false;
+            }
+        }));
+
+        createItem(mCommonlyToolsFl, new ItemBean(R.drawable.item_developer_settings_ic, "开发者选项", new ItemBean.OnItemClickListener() {
+            @Override
+            public boolean onClick(Context context) {
+                Intent intent = new Intent(Settings.ACTION_APPLICATION_DEVELOPMENT_SETTINGS);
+                startActivity(intent);
+                return false;
+            }
+        }));
+
+        createItem(mCommonlyToolsFl, new ItemBean(R.drawable.item_activity_stack_ic, "Activity栈", new ItemBean.OnItemClickListener() {
+            @Override
+            public boolean onClick(Context context) {
+                ActivityStackActivity.startActivity(context);
+                return false;
+            }
+        }));
+
+        createItem(mCommonlyToolsFl, new ItemBean(R.drawable.item_http_api_log_ic, "接口日志", new ItemBean.OnItemClickListener() {
+            @Override
+            public boolean onClick(Context context) {
+
+                // todo 接口日志
                 return false;
             }
         }));

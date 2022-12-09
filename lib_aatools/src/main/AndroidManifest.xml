@@ -7,23 +7,27 @@
     <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
     <!--读写权限-->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application>
 
         <activity
-            android:name="com.ixinrun.lib_aatools.base.AAToolsActivity"
+            android:name=".base.AAToolsActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/DevelopToolsTheme" />
 
         <activity
-            android:name="com.ixinrun.lib_aatools.tools.crash_log.CrashLogActivity"
+            android:name=".tools.crash_log.CrashLogActivity"
             android:screenOrientation="portrait"
             android:theme="@style/DevelopToolsTheme" />
 
         <activity
-            android:name="com.ixinrun.lib_aatools.tools.file.FileViewActivity"
+            android:name=".tools.file.FileViewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/DevelopToolsTheme" />
+
+        <activity
+            android:name=".tools.activity_stack.ActivityStackActivity"
             android:screenOrientation="portrait"
             android:theme="@style/DevelopToolsTheme" />
 
